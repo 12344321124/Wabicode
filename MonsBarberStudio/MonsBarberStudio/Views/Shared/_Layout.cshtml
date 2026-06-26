@@ -1,0 +1,212 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MonsBarberStudio</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MonsBarberStudio.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.05rem;
+            background-image: url('https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background-color: rgba(0, 0, 0, 0.78);
+                z-index: 0;
+            }
+
+        header, .container, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Fuente títulos */
+        h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 1px;
+            color: #ffffff !important;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+        }
+
+        /* Texto general claro */
+        p, span, td, th, label, li, small, .text-muted {
+            color: #f0f0f0 !important;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+        }
+
+        /* Links claros */
+        a:not(.nav-link):not(.navbar-brand):not(.btn) {
+            color: #d0d0d0 !important;
+        }
+
+            a:not(.nav-link):not(.navbar-brand):not(.btn):hover {
+                color: #ffffff !important;
+            }
+
+        /* Botones plateados */
+        .btn-silver {
+            background-color: #9e9e9e;
+            border-color: #888888;
+            color: #111111;
+            font-weight: 600;
+        }
+
+            .btn-silver:hover {
+                background-color: #2a2a2a;
+                border-color: #aaaaaa;
+                color: #ffffff;
+            }
+
+        /* Nav hover */
+        .nav-link:hover {
+            border-bottom: 2px solid #aaaaaa;
+        }
+
+        /* Input oscuro */
+        .form-control, .form-select {
+            background-color: #1e1e1e !important;
+            border-color: #555555 !important;
+            color: #f5f5f5 !important;
+        }
+
+            .form-control:focus, .form-select:focus {
+                box-shadow: 0 0 0 0.2rem rgba(170,170,170,0.3) !important;
+            }
+    </style>
+</head>
+<body class="text-white">
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-black border-bottom border-secondary shadow mb-3">
+            <div class="container-fluid">
+
+                <!-- LOGO -->
+                <a class="navbar-brand fw-bold fs-4 text-white" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-scissors me-2"></i>MonsBarberStudio
+                </a>
+
+                <!-- BOTÓN HAMBURGUESA -->
+                <button class="navbar-toggler border-secondary" type="button"
+                        data-bs-toggle="collapse" data-bs-target="#navbarMain"
+                        aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- LINKS -->
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-uppercase fw-semibold" style="font-size:0.95rem;">
+
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Home" asp-action="Index">
+                                <i class="bi bi-house me-1"></i>Home
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Rol" asp-action="Index">
+                                <i class="bi bi-shield me-1"></i>Rol
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Usuarios" asp-action="Index">
+                                <i class="bi bi-people me-1"></i>Usuario
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Barbero" asp-action="Index">
+                                <i class="bi bi-person-badge me-1"></i>Barbero
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Servicio" asp-action="Index">
+                                <i class="bi bi-scissors me-1"></i>Servicio
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="EstadoCita" asp-action="Index">
+                                <i class="bi bi-flag me-1"></i>Estado
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Cita" asp-action="Index">
+                                <i class="bi bi-calendar-check me-1"></i>Cita
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="DisponibilidadBarbero" asp-action="Index">
+                                <i class="bi bi-clock me-1"></i>Disponibilidad
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="CategoriaProducto" asp-action="Index">
+                                <i class="bi bi-tag me-1"></i>Categoría
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Producto" asp-action="Index">
+                                <i class="bi bi-box me-1"></i>Producto
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="Venta" asp-action="Index">
+                                <i class="bi bi-cart me-1"></i>Venta
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="DetalleVenta" asp-action="Index">
+                                <i class="bi bi-receipt me-1"></i>Detalle
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white-50 px-2" asp-controller="GaleriaCorte" asp-action="Index">
+                                <i class="bi bi-images me-1"></i>Galería
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container">
+        <main role="main" class="pb-4">
+            <div class="bg-black bg-opacity-75 rounded-3 p-4 border border-secondary shadow-lg">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-top border-secondary text-secondary text-center py-3 mt-4" style="position:relative;z-index:1;">
+        <div class="container">
+            <small>
+                <i class="bi bi-scissors me-1"></i>
+                &copy; 2026 <strong class="text-white">MonsBarberStudio</strong> —
+                <a class="text-secondary text-decoration-none" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </small>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
